@@ -44,7 +44,7 @@ function App() {
   useEffect(() => {
     if (routes === null) return;
     // console.log(speaking.current);
-
+    console.log(routes);
     const intervalId = setInterval(() => {
       // console.log(speaking.current);
       if (!speaking.current) {
@@ -56,7 +56,6 @@ function App() {
         const endLocation = routes.steps[indice.current].end_location;
         const latitude = endLocation.lat();
         const longitude = endLocation.lng();
-        console.log(latitude, longitude);
         const nextIndice = indice.current + 1;
         indice.current = nextIndice;
         setOriginLocation({ lat: latitude, lng: longitude });
@@ -67,6 +66,7 @@ function App() {
           setRoutes(null);
           // Limpa o intervalo se o final do array for alcançado
           clearInterval(intervalId);
+          textToSpeech("Você chegou no destino", speaking);
         }
         return nextIndice;
       }
