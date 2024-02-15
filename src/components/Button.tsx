@@ -20,7 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           "flex items-center justify-center   rounded-lg px-4  py-2 text-base transition duration-300 ",
           className,
           disabled && "opacity-70 hover:bg-onyx-600",
-          variant === "primary" && "bg-onyx-600 text-zinc-50 hover:bg-onyx-400",
+          variant === "primary" && "bg-onyx-600 text-zinc-50 hover:bg-onyx-500",
           variant === "secondary" && "bg-red-500 text-black",
           variant === "tertiary" && "bg-orange-500 text-green-400"
         )}

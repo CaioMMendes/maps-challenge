@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type CoordinatesType = {
+export type CoordinatesType = {
   lat: number;
   lng: number;
 };

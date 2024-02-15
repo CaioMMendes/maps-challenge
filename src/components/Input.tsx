@@ -54,7 +54,7 @@ const InputContainer = forwardRef(
     }: InputContainerProps,
     ref: LegacyRef<HTMLDivElement>
   ) => {
-    const inputContainerClassName = twMerge(className, "flex flex-col gap-1");
+    const inputContainerClassName = twMerge("flex flex-col gap-1", className);
 
     return (
       <div className={inputContainerClassName} {...rest} ref={ref}>
