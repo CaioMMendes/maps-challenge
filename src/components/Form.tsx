@@ -55,9 +55,12 @@ const Form = ({
   return (
     <Box
       variant="secondary"
-      className=" absolute  left-1/2 top-2 -translate-x-1/2 z-10"
+      className=" absolute  md:left-1/2 md:top-2 md:-translate-x-1/2 z-10 w-full md:w-fit top-14"
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="flex  gap-1 w-full">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex  gap-1 w-full justify-between"
+      >
         <InputContainer
           error={!!errors.start}
           errorMessage={errors.start?.message}
@@ -73,22 +76,26 @@ const Form = ({
                 placeholder="Informe o ponto de partida"
                 error={!!errors.start}
                 // ref={originRef}
-                className="w-80"
+                className="md:w-80 w-full flex flex-1"
               />
             </Autocomplete>
           </InputLabel>
         </InputContainer>
 
-        <InputContainer error={!!errors.end} errorMessage={errors.end?.message}>
+        <InputContainer
+          error={!!errors.end}
+          errorMessage={errors.end?.message}
+          className="flex flex-1 w-full"
+        >
           <InputLabel>
             <InputLabelText>Destino</InputLabelText>
-            <Autocomplete>
+            <Autocomplete className="w-full">
               <Input
                 {...register("end")}
                 placeholder="Informe o destino"
                 error={!!errors.end}
                 // ref={destinationRef}
-                className="w-80"
+                className="md:w-80 flex flex-1 w-full"
               />
             </Autocomplete>
           </InputLabel>
