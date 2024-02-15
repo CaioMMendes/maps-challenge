@@ -58,6 +58,8 @@ function App() {
 
       // Verifica se o próximo índice é maior ou igual ao comprimento do array
       if (nextIndice >= routes?.steps.length) {
+        indice.current = 0;
+        setRoutes(null);
         // Limpa o intervalo se o final do array for alcançado
         clearInterval(intervalId);
       }
