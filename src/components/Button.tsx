@@ -12,10 +12,10 @@ export type ButtonProps = DetailedHTMLProps<
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, disabled = false, variant = "primary", ...props }, ref) => {
+  ({ className, disabled = false, variant = "primary", ...rest }, ref) => {
     return (
       <button
-        disabled
+        disabled={disabled}
         className={twMerge(
           "flex items-center justify-center   rounded-lg px-4  py-2 text-base transition duration-300 ",
           className,
@@ -25,7 +25,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           variant === "tertiary" && "bg-orange-500 text-green-400"
         )}
         ref={ref}
-        {...props}
+        {...rest}
       />
     );
   }

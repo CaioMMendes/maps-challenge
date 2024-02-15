@@ -9,3 +9,39 @@
   border-radius: 8px;
   background-color: #515c56;
 }
+
+/* .pac-container {
+  background-color: #5d6963;
+
+  border: none;
+  outline: none;
+}
+
+.pac-item {
+  color: #a1a1aa;
+}
+.pac-item:hover {
+  background: "#627069" !important;
+}
+
+.pac-item-query {
+  color: "#fafafa" !important;
+  background-color: "#fafafa" !important;
+}
+
+.pac-matched {
+  color: "#fafafa" !important;
+  background-color: "#fafafa" !important;
+}
+
+.pac-icon {
+  color: "#fafafa";
+} */
+
+.pac-logo {
+  padding: 10px 0;
+}
+
+.pac-logo::after {
+  display: none;
+}
