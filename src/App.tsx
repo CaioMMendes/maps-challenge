@@ -38,8 +38,7 @@ function App() {
           getLocation();
         };
       });
-    //eslint-disable-next-line
-  }, []);
+  }, [routes]);
 
   useEffect(() => {
     if (routes === null) return;
