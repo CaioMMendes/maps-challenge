@@ -18,14 +18,17 @@ export const useLocation = () => {
       return alert("Your browser does not support geolocation");
 
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
+      ({ coords: { latitude: lat, longitude: lng } }) => {
         setCenterLocation({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
+          lat,
+          lng,
         });
       },
       (error) => {
         setError(error.message);
+      },
+      {
+        enableHighAccuracy: true,
       }
     );
   }
