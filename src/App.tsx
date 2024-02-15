@@ -7,7 +7,7 @@ import {
   Marker,
   useJsApiLoader,
 } from "@react-google-maps/api";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Box } from "./components/Box";
@@ -37,7 +37,7 @@ function App() {
   const [directionResponse, setDirectionResponse] =
     useState<google.maps.DirectionsResult | null>(null);
   //eslint-disable-next-line
-  const [indice, setIndice] = useState(0); // Estado para armazenar o índice atual
+  const indice = useRef<number>(0); // Estado para armazenar o índice atual
   useEffect(() => {
     getLocation();
     //eslint-disable-next-line
@@ -47,22 +47,21 @@ function App() {
     if (routes === null) return;
     const intervalId = setInterval(() => {
       // Incrementa o índice a cada 2 segundos
-      setIndice((prevIndice) => {
-        const endLocation = routes.steps[prevIndice].end_location;
-        const latitude = endLocation.lat();
-        const longitude = endLocation.lng();
-        console.log(latitude, longitude);
-        const nextIndice = prevIndice + 1;
 
-        setOriginLocation({ lat: latitude, lng: longitude });
+      const endLocation = routes.steps[indice.current].end_location;
+      const latitude = endLocation.lat();
+      const longitude = endLocation.lng();
+      console.log(latitude, longitude);
+      const nextIndice = indice.current + 1;
+      indice.current = nextIndice;
+      setOriginLocation({ lat: latitude, lng: longitude });
 
-        // Verifica se o próximo índice é maior ou igual ao comprimento do array
-        if (nextIndice >= routes?.steps.length) {
-          // Limpa o intervalo se o final do array for alcançado
-          clearInterval(intervalId);
-        }
-        return nextIndice;
-      });
+      // Verifica se o próximo índice é maior ou igual ao comprimento do array
+      if (nextIndice >= routes?.steps.length) {
+        // Limpa o intervalo se o final do array for alcançado
+        clearInterval(intervalId);
+      }
+      return nextIndice;
     }, 2000);
 
     // Limpa o intervalo quando o componente é desmontado
@@ -172,7 +171,7 @@ function App() {
             // onLoad={(map) => setMap(map)}
           >
             <Marker
-              position={originLocation}
+              position={originLocation || centerLocation}
               title={"Você está aqui"}
               options={{
                 label: {
