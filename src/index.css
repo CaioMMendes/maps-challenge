@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.markerMaps {
+  font-size: 20px;
+  padding: 4px 8px;
+  margin-bottom: 45px;
+  border-radius: 8px;
+  background-color: #515c56;
+}
