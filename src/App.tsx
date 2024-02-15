@@ -33,7 +33,7 @@ function App() {
   const { centerLocation, getLocation } = useLocation();
   // const [map, setMap] = useState<google.maps.Map | null>(null);
   const [originLocation, setOriginLocation] = useState(centerLocation);
-  const [routes, setRoutes] = useState<google.maps.DirectionsLeg>({});
+  const [routes, setRoutes] = useState<google.maps.DirectionsLeg | null>(null);
   const [directionResponse, setDirectionResponse] =
     useState<google.maps.DirectionsResult | null>(null);
   //eslint-disable-next-line
@@ -44,7 +44,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (Object.keys(routes).length === 0) return;
+    if (routes === null) return;
     const intervalId = setInterval(() => {
       // Incrementa o índice a cada 2 segundos
       setIndice((prevIndice) => {
