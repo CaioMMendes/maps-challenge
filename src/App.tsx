@@ -100,6 +100,7 @@ function App() {
             centerLocation={centerLocation}
             setDirectionResponse={setDirectionResponse}
             setRoutes={setRoutes}
+            indice={indice}
           />
           <GoogleMap
             zoom={15}

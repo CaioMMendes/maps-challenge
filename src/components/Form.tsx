@@ -18,12 +18,14 @@ type FormProps = {
   setRoutes: React.Dispatch<
     React.SetStateAction<google.maps.DirectionsLeg | null>
   >;
+  indice: React.MutableRefObject<number>;
 };
 
 const Form = ({
   centerLocation,
   setDirectionResponse,
   setRoutes,
+  indice,
 }: FormProps) => {
   const {
     register,
@@ -47,6 +49,7 @@ const Form = ({
       });
       setDirectionResponse(results);
       setRoutes(results.routes[0].legs[0]);
+      indice.current = 0;
     } catch (error) {
       alert("Não foi possível estabelecer uma rota");
     }
